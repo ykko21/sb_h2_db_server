@@ -13,10 +13,24 @@ public class HelloworldApplication {
 	private static final Logger log = LoggerFactory.getLogger(HelloworldApplication.class);
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(HelloworldApplication.class, args);
-		Event event = new Event(1L, "agent-1", "hello", Utils.getFormattedCurrentTimestamp());
+
+//		private Long messageId;
+//		private String agentId;
+//		private String message;
+//		private String timestamp;
+		String json = "{\"messageId\":1746403348088,\"agentId\":\"agent-1\",\"message\":\"Hello~\",\"timestamp\":\"2025-05-04 20:02:28.089\"}";
 		ObjectMapper objectMapper = new ObjectMapper();
-		log.info(objectMapper.writeValueAsString(event));
+		Event event = objectMapper.readValue(json, Event.class);
+		System.out.println(event.getMessageId());
+		System.out.println(event.getAgentId());
+		System.out.println(event.getMessage());
+		System.out.println(event.getTimestamp());
+
+
+//		SpringApplication.run(HelloworldApplication.class, args);
+//		Event event = new Event(1L, "agent-1", "hello", Utils.getFormattedCurrentTimestamp());
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		log.info(objectMapper.writeValueAsString(event));
 
 //		String[] agents = {"agent-1","agent-2","agent-3"};
 //		int iteration = 1;

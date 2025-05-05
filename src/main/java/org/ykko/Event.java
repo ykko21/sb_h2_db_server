@@ -47,4 +47,5 @@ public class Event {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
+
 }
